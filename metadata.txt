@@ -1,0 +1,1 @@
+Age: age column contains age of custumers in years.

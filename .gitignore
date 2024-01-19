@@ -1,0 +1,8 @@
+notebooks/.ipynb_checkpoints/
+data/
+notebooks/Experimentation/mlruns
+notebooks/Experimentation/.ipynb_checkpoints/
+steps/__pycache__
+__pycache__
+code/__pycache__
+BankCustomer/data
