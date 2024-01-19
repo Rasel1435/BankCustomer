@@ -1,8 +1,6 @@
 # BankCustomer
 
-"""
 Author: Sheikh Rasel Ahmed <shekhrasel59@gmail.com>
-"""
 
 
 # Check This all -->
