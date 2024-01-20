@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from feature_engine.selection import SmartCorrelatedSelection, RecursiveFeatureElimination
 
 
-### Global Variables
+
 ### Logging Configuration
 logging.basicConfig(
     level=logging.DEBUG,
@@ -166,3 +166,5 @@ if __name__ == '__main__':
         logger.info(f"data has been saved successfully!")
     else:
         logger.error(f"data is not available!")
+        
+# Author: Sheikh Rasel Ahmed <shekhrasel59@gmail.com>

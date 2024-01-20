@@ -1,15 +1,17 @@
 import logging
-from zenml import step
 import pandas as pd
+
+from zenml import step
 from typing import Union
 
+logger = logging.getLogger(__name__)
 
 @step(enable_cache=True)
 def clean_data(data: pd.DataFrame) -> Union[pd.DataFrame, None]:
     """
     Clean the data by removing null values, duplicate rows, and formating column names .
     """
-    logging.info("Cleaning the data...")
+    logger.info(f"==> Processing clean_data()")
     try:
         data.dropna(axis=0, inplace=True)
         data.drop_duplicates(inplace=True)
@@ -33,10 +35,10 @@ def clean_data(data: pd.DataFrame) -> Union[pd.DataFrame, None]:
         # for col, typp in new_types.items():
         #     data[col] = data[col].astype(typp)
 
-        logging.info("Data cleaned successfully.")
+        logger.info(f"==> Successfully processed clean_data()")
         return data
     except Exception as e:
-        logging.error(f"Error while cleaning data: {e}")
+        logger.error(f"Error while cleaning data: {e}")
         return None
 
 

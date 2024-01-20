@@ -1,11 +1,14 @@
 import logging
-from zenml import step
 import pandas as pd
+
+from zenml import step
 from typing import Union
+
+logger = logging.getLogger(__name__)
 
 
 @step(enable_cache=True)
-def ingest_data(data_source: str) -> Union[pd.DataFrame, None]:
+def ingest_data(DATA_SOURCE: str) -> Union[pd.DataFrame, None]:
     """
     Ingests data from a given path.
 
@@ -16,11 +19,20 @@ def ingest_data(data_source: str) -> Union[pd.DataFrame, None]:
         The data as a DataFrame.
     """
     try:
-        logging.info(f"Reading data from {data_source}")
+        logger.info(f"Reading data from {DATA_SOURCE}")
         data = pd.read_csv(
-            data_source,  encoding="unicode_escape", low_memory=False)
-        logging.info(f"Data read from {data_source}")
+            DATA_SOURCE,  encoding="unicode_escape", low_memory=False)
+        logger.info(f"Data read from {DATA_SOURCE}")
         return data
     except Exception as e:
-        logging.error(f"Error reading data from {data_source}: {e}")
+        logger.error(f"Error reading data from {DATA_SOURCE}: {e}")
         return None
+
+if __name__ == '__main__':
+    data = ingest_data(
+        DATA_SOURCE='C:/Users/SRA/Desktop/backup/TowfiqVai/BankCustomer/data/final.csv')
+    print(data.head())
+    print(data.shape)
+    """Now this data come from local system but when you deploy your model that moment
+    you have to add the realtime data source link here.
+    """
